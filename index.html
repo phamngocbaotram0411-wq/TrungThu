@@ -14,8 +14,8 @@
       background-size: cover;
       background-position: center;
       font-family: "Poppins", "Comic Sans MS", sans-serif;
-      color: #fff;
       position: relative;
+      color: #fff;
     }
 
     .floating-text {
@@ -27,34 +27,15 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       white-space: nowrap;
-      opacity: 0;
-      animation: floatText 12s linear infinite;
+      animation: moveAround 15s linear infinite;
     }
 
-    @keyframes floatText {
-      0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      25% {
-        transform: translate(70vw, 20vh) rotate(10deg);
-      }
-      50% {
-        transform: translate(20vw, 70vh) rotate(-10deg);
-      }
-      75% {
-        transform: translate(80vw, 50vh) rotate(15deg);
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translate(0, 0) rotate(0deg) scale(1);
-        opacity: 0;
-      }
+    @keyframes moveAround {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+      25% { transform: translate(70vw, 20vh) rotate(10deg); }
+      50% { transform: translate(20vw, 70vh) rotate(-15deg); }
+      75% { transform: translate(80vw, 50vh) rotate(15deg); }
+      100% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
     }
 
     .star {
@@ -76,6 +57,7 @@
       position: absolute;
       bottom: 15px;
       right: 15px;
+      z-index: 10;
     }
   </style>
 </head>
@@ -87,7 +69,6 @@
   </audio>
 
   <script>
-    // Danh sách lời chúc ✨
     const messages = [
       "🌕 Chúc bạn Trung Thu tròn đầy, an vui!",
       "✨ Ánh trăng sáng rực rỡ, niềm vui lan tỏa khắp nơi 🎉",
@@ -96,23 +77,27 @@
       "🎶 Trung Thu sum vầy, hạnh phúc trọn vẹn bên người thân 💫"
     ];
 
-    // Tạo nhiều dòng chữ bay khắp màn hình, lặp đi lặp lại
-    function createFloatingText() {
-      for (let i = 0; i < 50; i++) {  // 50 dòng chữ ngẫu nhiên
-        const text = document.createElement("div");
-        text.classList.add("floating-text");
-        text.innerText = messages[Math.floor(Math.random() * messages.length)];
-        text.style.top = Math.random() * 100 + "vh";
-        text.style.left = Math.random() * 100 + "vw";
-        text.style.animationDuration = 8 + Math.random() * 10 + "s";
-        text.style.animationDelay = Math.random() * 5 + "s";
-        document.body.appendChild(text);
+    // Hàm tạo nhiều dòng chữ bay ngẫu nhiên khắp màn hình
+    function createFloatingTexts() {
+      for (let i = 0; i < messages.length; i++) {
+        for (let j = 0; j < 5; j++) { // mỗi câu xuất hiện 5 lần
+          const text = document.createElement("div");
+          text.classList.add("floating-text");
+          text.innerText = messages[i];
+
+          text.style.top = Math.random() * 90 + "vh";
+          text.style.left = Math.random() * 90 + "vw";
+          text.style.animationDuration = (10 + Math.random() * 10) + "s";
+          text.style.animationDelay = (Math.random() * 5) + "s";
+
+          document.body.appendChild(text);
+        }
       }
     }
 
-    // Tạo các ngôi sao lấp lánh ✨
+    // Tạo sao lấp lánh
     function createStars() {
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 80; i++) {
         const star = document.createElement("div");
         star.classList.add("star");
         star.style.top = Math.random() * 100 + "%";
@@ -122,9 +107,8 @@
       }
     }
 
-    createFloatingText();
+    createFloatingTexts();
     createStars();
   </script>
-
 </body>
 </html>
