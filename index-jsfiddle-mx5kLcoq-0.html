@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSFiddle mx5kLcoq</title>
+
+  <style>
+    
+  </style>
+
+  
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lời chúc Trung Thu 💫</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: url("01fad37e-5808-4e47-a1df-5b08ee214b72.png") no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: "Baloo 2", cursive;
+  }
+
+  .message {
+    position: absolute;
+    text-align: center;
+    color: #fff9f3;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    text-shadow: 0 0 15px #ffccff, 0 0 25px #ffd6d6;
+    animation: floatText 5s ease-in-out infinite alternate;
+  }
+
+  @keyframes floatText {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-15px); }
+  }
+
+  .stars {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .star {
+    position: absolute;
+    color: #fff8dc;
+    font-size: 1.5rem;
+    opacity: 0.8;
+    animation: twinkle 2s infinite ease-in-out;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="message">
+  💫✨✨🌙<br>
+  Chúc cậu luôn “sáng” như trăng rằm,<br>
+  “ngọt” như bánh dẻo, và “vui” khi ở bên tui 💫✨✨🌙<br><br>
+  <b>Trung Thu vui vẻ nha ✨</b>
+</div>
+
+<script>
+// tạo hiệu ứng sao lấp lánh
+const starsContainer = document.getElementById("stars");
+for (let i = 0; i < 20; i++) {
+  const star = document.createElement("div");
+  star.classList.add("star");
+  star.textContent = "⭐";
+  star.style.left = Math.random() * 100 + "vw";
+  star.style.top = Math.random() * 100 + "vh";
+  star.style.animationDelay = Math.random() * 2 + "s";
+  starsContainer.appendChild(star);
+}
+</script>
+
+</body>
+</html>
+
+
+  <script>
+    
+  </script>
+</body>
+</html>
