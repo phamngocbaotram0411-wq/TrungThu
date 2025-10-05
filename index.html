@@ -1,25 +1,9 @@
 <!DOCTYPE html>
-<html>
-
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JSFiddle mx5kLcoq</title>
-
-  <style>
-    
-  </style>
-
-  
-</head>
-<body>
-  <!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trung Thu Lung Linh</title>
+  <title>Trung Thu Lung Linh ✨</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -30,8 +14,8 @@
       background-size: cover;
       background-position: center;
       font-family: "Poppins", "Comic Sans MS", sans-serif;
-      position: relative;
       color: #fff;
+      position: relative;
     }
 
     .floating-text {
@@ -43,29 +27,33 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       white-space: nowrap;
-      animation: float 15s linear infinite;
+      opacity: 0;
+      animation: floatText 12s linear infinite;
     }
 
-    @keyframes float {
+    @keyframes floatText {
       0% {
-        transform: translate(0, 0) rotate(0deg);
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+      }
+      10% {
         opacity: 1;
       }
       25% {
-        transform: translate(70vw, 20vh) rotate(15deg);
-        opacity: 0.9;
+        transform: translate(70vw, 20vh) rotate(10deg);
       }
       50% {
         transform: translate(20vw, 70vh) rotate(-10deg);
-        opacity: 1;
       }
       75% {
-        transform: translate(80vw, 50vh) rotate(20deg);
-        opacity: 0.9;
+        transform: translate(80vw, 50vh) rotate(15deg);
+      }
+      90% {
+        opacity: 1;
       }
       100% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 1;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0;
       }
     }
 
@@ -84,19 +72,6 @@
       to { transform: scale(1.6); opacity: 1; }
     }
 
-    footer {
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      font-size: 16px;
-      color: #fff;
-      text-shadow: 1px 1px 3px #000;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 8px;
-      border-radius: 8px;
-    }
-
     audio {
       position: absolute;
       bottom: 15px;
@@ -105,13 +80,6 @@
   </style>
 </head>
 <body>
-  <!-- Các lời chúc bay khắp màn hình -->
-  <div class="floating-text" style="top:10%; left:5%; animation-delay:0s;">🌕 Chúc bạn Trung Thu tròn đầy, an vui!</div>
-  <div class="floating-text" style="top:40%; left:10%; animation-delay:3s;">✨ Ánh trăng sáng rực rỡ, niềm vui lan tỏa khắp nơi 🎉</div>
-  <div class="floating-text" style="top:70%; left:15%; animation-delay:6s;">🍡 Hương bánh nồng nàn, tình thân đong đầy 💖</div>
-  <div class="floating-text" style="top:20%; left:60%; animation-delay:9s;">🌈 Mong bạn luôn tươi cười, như trăng rằm tháng Tám 🌕</div>
-  <div class="floating-text" style="top:60%; left:70%; animation-delay:12s;">🎶 Trung Thu sum vầy, hạnh phúc trọn vẹn bên người thân 💫</div>
-
 
   <!-- Nhạc nền Trung Thu -->
   <audio controls autoplay loop>
@@ -119,23 +87,44 @@
   </audio>
 
   <script>
-    // Tạo các ngôi sao lấp lánh ngẫu nhiên
-    for (let i = 0; i < 80; i++) {
-      const star = document.createElement("div");
-      star.classList.add("star");
-      star.style.top = Math.random() * 100 + "%";
-      star.style.left = Math.random() * 100 + "%";
-      star.style.animationDelay = Math.random() * 2 + "s";
-      document.body.appendChild(star);
+    // Danh sách lời chúc ✨
+    const messages = [
+      "🌕 Chúc bạn Trung Thu tròn đầy, an vui!",
+      "✨ Ánh trăng sáng rực rỡ, niềm vui lan tỏa khắp nơi 🎉",
+      "🍡 Hương bánh nồng nàn, tình thân đong đầy 💖",
+      "🌈 Mong bạn luôn tươi cười, như trăng rằm tháng Tám 🌕",
+      "🎶 Trung Thu sum vầy, hạnh phúc trọn vẹn bên người thân 💫"
+    ];
+
+    // Tạo nhiều dòng chữ bay khắp màn hình, lặp đi lặp lại
+    function createFloatingText() {
+      for (let i = 0; i < 50; i++) {  // 50 dòng chữ ngẫu nhiên
+        const text = document.createElement("div");
+        text.classList.add("floating-text");
+        text.innerText = messages[Math.floor(Math.random() * messages.length)];
+        text.style.top = Math.random() * 100 + "vh";
+        text.style.left = Math.random() * 100 + "vw";
+        text.style.animationDuration = 8 + Math.random() * 10 + "s";
+        text.style.animationDelay = Math.random() * 5 + "s";
+        document.body.appendChild(text);
+      }
     }
+
+    // Tạo các ngôi sao lấp lánh ✨
+    function createStars() {
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        star.style.top = Math.random() * 100 + "%";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.animationDelay = Math.random() * 2 + "s";
+        document.body.appendChild(star);
+      }
+    }
+
+    createFloatingText();
+    createStars();
   </script>
+
 </body>
 </html>
-
-
-  <script>
-    
-  </script>
-</body>
-</html>
-
