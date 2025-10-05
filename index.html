@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trung Thu Lung Linh</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       height: 100vh;
@@ -17,17 +13,106 @@
       background-image: url("https://phamngocbaotram0411-wq.github.io/TrungThu/50787561360fdf97605f899f2099077a.jpg");
       background-size: cover;
       background-position: center;
-      font-family: "Comic Sans MS", "Segoe UI", sans-serif;
+      font-family: "Poppins", "Comic Sans MS", sans-serif;
       position: relative;
       color: #fff;
     }
 
-    .text {
+    .floating-text {
       position: absolute;
       font-size: 28px;
       font-weight: bold;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-      animation: move 12s linear infinite;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+      background: linear-gradient(45deg, #ffeb3b, #ff4081, #4caf50, #2196f3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       white-space: nowrap;
-      background: linear-gradien
+      animation: float 15s linear infinite;
+    }
 
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+      }
+      25% {
+        transform: translate(70vw, 20vh) rotate(15deg);
+        opacity: 0.9;
+      }
+      50% {
+        transform: translate(20vw, 70vh) rotate(-10deg);
+        opacity: 1;
+      }
+      75% {
+        transform: translate(80vw, 50vh) rotate(20deg);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    .star {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkle 2s infinite ease-in-out alternate;
+    }
+
+    @keyframes sparkle {
+      from { transform: scale(1); opacity: 0.5; }
+      to { transform: scale(1.6); opacity: 1; }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      color: #fff;
+      text-shadow: 1px 1px 3px #000;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    audio {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Các lời chúc bay khắp màn hình -->
+  <div class="floating-text" style="top:10%; left:5%; animation-delay:0s;">🌕 Chúc bạn Trung Thu tròn đầy, an vui!</div>
+  <div class="floating-text" style="top:40%; left:10%; animation-delay:3s;">✨ Ánh trăng sáng rực rỡ, niềm vui lan tỏa khắp nơi 🎉</div>
+  <div class="floating-text" style="top:70%; left:15%; animation-delay:6s;">🍡 Hương bánh nồng nàn, tình thân đong đầy 💖</div>
+  <div class="floating-text" style="top:20%; left:60%; animation-delay:9s;">🌈 Mong bạn luôn tươi cười, như trăng rằm tháng Tám 🌕</div>
+  <div class="floating-text" style="top:60%; left:70%; animation-delay:12s;">🎶 Trung Thu sum vầy, hạnh phúc trọn vẹn bên người thân 💫</div>
+
+  <footer>© 2025 Bảo Trâm — Đêm Trăng Lung Linh ✨</footer>
+
+  <!-- Nhạc nền Trung Thu -->
+  <audio controls autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2023/07/09/audio_6ad62df0e1.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Tạo các ngôi sao lấp lánh ngẫu nhiên
+    for (let i = 0; i < 80; i++) {
+      const star = document.createElement("div");
+      star.classList.add("star");
+      star.style.top = Math.random() * 100 + "%";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.animationDelay = Math.random() * 2 + "s";
+      document.body.appendChild(star);
+    }
+  </script>
+</body>
+</html>
